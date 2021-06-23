@@ -1,3 +1,5 @@
 <label>{{ labelText }}:</label>
 <p *ngIf="(inputFormControl.touched && !inputFormControl.value) || !inputFormControl.valid">{{hint}}</p>
-<input [type]="type" [formControl]="inputFormControl">
+<input [type]="type" [formControl]="inputFormControl" #input>
+
+<button type="button" (click)="sendValidInput.next(input.value)">Emit Event</button>

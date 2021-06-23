@@ -13,5 +13,14 @@
 <br>
 <input-with-validation label-text="Your Age" type="number"></input-with-validation>
 <script src="scripts.min.js" defer></script>
+<script>
+
+  for (const inputWithValidation of document.getElementsByTagName('input-with-validation')) {
+
+    inputWithValidation.addEventListener('sendValidInput', function (event) {
+      alert(event.detail);
+    });
+  }
+</script>
 </body>
 </html>

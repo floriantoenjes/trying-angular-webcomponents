@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, ValidatorFn, Validators} from '@angular/forms';
 
 @Component({
@@ -13,6 +13,9 @@ export class InputWithValidationComponent implements OnInit {
 
   @Input()
   type = 'text';
+
+  @Output()
+  sendValidInput = new EventEmitter();
 
   inputFormControl = new FormControl();
 
@@ -36,5 +39,4 @@ export class InputWithValidationComponent implements OnInit {
 
     this.inputFormControl.setValidators(validators);
   }
-
 }
