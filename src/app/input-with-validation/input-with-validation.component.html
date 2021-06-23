@@ -1,0 +1,3 @@
+<label>{{ labelText }}:</label>
+<p *ngIf="(inputFormControl.touched && !inputFormControl.value) || !inputFormControl.valid" style="color: red">{{hint}}</p>
+<input [type]="type" [formControl]="inputFormControl">

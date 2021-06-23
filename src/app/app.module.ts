@@ -1,16 +1,32 @@
-import { NgModule } from '@angular/core';
+import {ApplicationRef, Injector, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import { InputWithValidationComponent } from './input-with-validation/input-with-validation.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {createCustomElement} from '@angular/elements';
+import {AppComponent} from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InputWithValidationComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule
+    ],
   providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [InputWithValidationComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private injector: Injector) {
+    const el = createCustomElement(InputWithValidationComponent, {injector});
+    customElements.define('input-with-validation', el);
+  }
+
+  public ngDoBootstrap(appRef: ApplicationRef): void {
+    if (document.querySelector('app-root')) {
+      appRef.bootstrap(AppComponent);
+    }
+  }
+}
