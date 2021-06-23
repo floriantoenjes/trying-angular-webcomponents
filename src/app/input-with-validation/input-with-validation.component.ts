@@ -21,9 +21,6 @@ export class InputWithValidationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
-    console.log(this);
-
     const validators: ValidatorFn[] = [];
 
     switch (this.type) {
